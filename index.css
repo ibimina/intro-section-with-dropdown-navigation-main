@@ -1,0 +1,648 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@500;700&display=swap');
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+    margin: 0;
+}
+
+
+/* set up the body */
+body {
+    line-height: 1.5;
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    overflow-x: hidden;
+    background-color: hsl(0, 0%, 98%);
+    font-family: 'Epilogue', sans-serif;
+
+}
+
+/* make images easier to work with */
+/* img,
+picutre {
+    max-width: 100%;
+    display: block;
+} */
+
+/* make form elements easier to work with */
+
+button,
+p,
+h1 {
+    /* font-family: inherit; */
+    font-family: 'Epilogue',
+        sans-serif;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* ------------------- */
+/* Utility classes     */
+/* ------------------- */
+
+/* general */
+
+.flex {
+    display: flex;
+    gap: var(--gap, 1rem);
+}
+
+.grid {
+    display: grid;
+    gap: var(--gap, 1rem);
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.list-style {
+    list-style: none;
+}
+
+.link-d {
+    text-decoration: none;
+}
+
+.mobile-nav-toggle {
+    display: none;
+}
+
+.text-color {
+    color: hsl(0, 0%, 41%);
+}
+
+.desktop-header {
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.primary-nav {
+    padding: 1rem;
+}
+
+.primary-nav li {
+    padding-inline: .8rem;
+}
+
+.primary-nav a,
+.log a {
+    color: hsl(0, 0%, 41%);
+}
+
+.nav {
+    justify-content: space-between;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: hsl(0, 0%, 41%);
+}
+
+a:hover,
+a:focus,
+.log a:hover,
+.log a:focus {
+    color: hsl(0, 0%, 8%);
+}
+
+
+.register {
+    border-radius: 10px;
+    border: 1px solid hsl(0, 0%, 41%);
+    padding: .3rem .8rem .3rem .8rem;
+    background-color: hsl(0, 0%, 98%);
+}
+
+.register:hover {
+    color: hsl(0, 0%, 8%);
+    border-color: hsl(0, 0%, 8%);
+    cursor: pointer;
+}
+
+.feadropdown {
+    list-style: none;
+}
+
+.none {
+    display: none;
+}
+
+.comdropdown {
+    display: none;
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+.learn {
+    background-color: hsl(0, 0%, 8%);
+    color: hsl(0, 0%, 98%);
+    padding: .9rem 2rem .9rem 2rem;
+    border: 0;
+    border-radius: 18px;
+}
+
+.learn:hover,
+.learn:focus {
+    color: hsl(0, 0%, 8%);
+    background-color: hsl(0, 0%, 98%);
+    border: 1px solid hsl(0, 0%, 8%);
+    cursor: pointer;
+
+}
+
+.client {
+    padding-inline: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.client img {
+    width: 4rem;
+    height: 1.1rem;
+}
+
+@media (max-width: 35rem) {
+
+    .primary-nav {
+        position: fixed;
+        z-index: 1000;
+        inset: 0 0 0 40%;
+        list-style: none;
+        padding: min(20rem, 15vh) 1rem;
+        margin: 0;
+        flex-direction: column;
+        transform: translateX(100%);
+        transition: transform 500ms ease-in-out;
+        background-color: hsl(0, 0%, 98%);
+    }
+
+    .primary-nav[data-visible="true"] {
+        transform: translateX(0);
+        box-shadow: 0 1rem 2rem 15rem rgba(0, 0, 0, 0.5);
+    }
+
+    .mobile-nav-toggle {
+        display: block;
+        position: absolute;
+        z-index: 2000;
+        left: 19rem;
+        top: 2rem;
+        background-image: url(images/icon-menu.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 1.5rem;
+        aspect-ratio: 1;
+        border: 0;
+        background-color: white;
+    }
+
+    .mobile-nav-toggle[aria-expanded="true"] {
+        background-image: url(images/icon-close-menu.svg);
+    }
+
+    .mobile-nav-toggle:focus-visible {
+        outline: 5px solid black;
+        outline-offset: 5px;
+    }
+
+    .f-block {
+        list-style: none;
+        border-radius: 10px;
+        color: hsl(0, 0%, 41%);
+        padding: 1rem;
+    }
+
+    .f-block li {
+        padding: .5rem;
+
+    }
+
+    .f-block img {
+        padding-right: .5rem;
+    }
+
+    .c-block {
+        list-style: none;
+        border-radius: 10px;
+        color: hsl(0, 0%, 41%);
+        padding: 1rem;
+    }
+
+    .c-block li {
+        padding: .5rem;
+    }
+
+    .logo {
+        margin: 2rem;
+    }
+
+    .log {
+        display: none;
+    }
+
+    main {
+        text-align: center;
+    }
+
+    h1 {
+        text-align: center;
+        font-weight: 700;
+        padding: 1rem;
+    }
+
+    p {
+        text-align: center;
+        padding-inline: 1.2rem;
+        color: hsl(0, 0%, 41%);
+        font-weight: 500;
+    }
+
+    .learn {
+        margin: 2rem;
+    }
+
+
+}
+
+@media screen and (min-width:22.5rem) {
+    .mobile-nav-toggle {
+        left: 19rem;
+    }
+
+    img.mob {
+        width: 360px;
+    }
+
+    .client {
+        padding-inline: 2.5rem;
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        margin-top: 2rem;
+    }
+
+    .client img {
+        width: 4rem;
+        height: 1.1rem;
+    }
+
+    .attribution {
+        margin: 1rem;
+
+    }
+
+}
+
+@media screen and (min-width:24.5rem) {
+    img.mob {
+        width: 390px;
+    }
+
+    .attribution {
+        margin: 2rem;
+    }
+}
+
+@media screen and (min-width:25.75rem) {
+    .mobile-nav-toggle {
+        left: 22rem;
+    }
+
+    .client {
+        padding-inline: 3.5rem;
+        display: flex;
+        gap: 1rem;
+    }
+
+    img.mob {
+        width: 414px;
+    }
+}
+
+@media screen and (min-width:33.75rem) {
+    .mobile-nav-toggle {
+        left: 30rem;
+    }
+
+    img.mob {
+        width: 535px;
+    }
+
+    .client {
+        padding-inline: 5rem;
+        display: flex;
+        gap: 2rem;
+
+    }
+}
+
+@media screen and (min-width:45rem) {
+    .logo {
+        margin-left: 2rem;
+margin-top: 1rem;
+    }
+
+    .desktop-header .flex {
+        gap: var(--gap, 1rem);
+        margin-top: 1rem;
+    }
+
+    .nav {
+        width: 77%;
+    }
+
+    .primary-nav li {
+        padding-inline: .5rem;
+    }
+
+    .log {
+        padding: 0;
+        align-items: center;
+    }
+
+    .log li {
+        padding-right: 1rem;
+        margin: .2rem;
+    }
+
+    .f-block {
+        display: block;
+        list-style: none;
+        position: absolute;
+        padding: 1.1rem;
+        right: 68%;
+        background-color: hsl(0, 0%, 100%);
+        border-radius: 10px;
+        min-width: 8rem;
+        margin: 1rem;
+        box-shadow: 1px 1px 1rem rgba(0, 0, 0, 0.4);
+    }
+
+    .f-block img {
+        padding-right: .5rem;
+    }
+
+    .c-block {
+        display: block;
+        list-style: none;
+        position: absolute;
+        padding: 1rem;
+        right: 47%;
+        background-color: hsl(0, 0%, 100%);
+        border-radius: 10px;
+        margin: 1rem;
+        box-shadow: 1px 1px 1rem rgba(0, 0, 0, 0.4);
+    }
+
+    .f-block a {
+        color: hsl(0, 0%, 41%);
+    }
+
+    .c-block a {
+        color: hsl(0, 0%, 41%);
+    }
+
+    main {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0;
+    }
+
+    img.mob {
+        width: 300px;
+        margin-right: 5rem;
+    }
+
+    .data {
+        text-align: left;
+        margin-left: 1.5rem;
+        width: 20rem;
+        padding: 1rem;
+        margin: 3rem;
+    }
+
+    h1 {
+        margin-top: 2.9rem;
+        font-weight: 800;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .b {
+        display: block;
+    }
+
+    .data p {
+        margin-bottom: 2rem;
+
+    }
+
+    .learn {
+        margin-bottom: 5rem;
+    }
+
+    .client {
+        padding-inline: .5rem;
+        display: flex;
+    }
+
+    .client img {
+        width: 4rem;
+        height: 1rem;
+    }
+
+    .attribution {
+        padding: 0;
+    }
+}
+
+
+@media screen and (min-width:51rem) {
+    .logo {
+        margin-left: 2rem;
+    }
+
+    .f-block {
+        right: 70%;
+    }
+
+    .c-block {
+        right: 50%;
+    }
+
+    img.mob {
+        margin-right: 6rem;
+    }
+}
+
+@media screen and (min-width:57rem) {
+    .logo {
+        margin-left: 3rem;
+    }
+.desktop-header .flex {
+    margin: 1rem;
+}
+    .nav {
+        width: 83%;
+    }
+
+    .f-block {
+        right: 68%;
+        padding: 1.4rem;
+    }
+
+    .c-block {
+        right: 50%;
+    }
+
+    .data {
+        padding: 0rem;
+        margin-left: 4rem;
+    }
+}
+
+@media screen and (min-width:64rem) {
+    .primary-nav li {
+        padding-inline: 1.5rem;
+    }
+
+    .f-block {
+        padding: .5rem;
+        margin: 0;
+        right: 71%;
+        top: 5rem;
+    }
+
+    .f-block li {
+        padding: .2rem;
+    }
+
+    .c-block {
+        right: 53%;
+        margin: 0;
+        top: 5rem;
+        padding: 1.2rem;
+
+    }
+
+    .c-block li {
+        padding: .2rem;
+    }
+
+    main {
+        margin-top: -1rem;
+        margin-inline: 6rem;
+    }
+
+    .data {
+        margin: 7rem;
+    }
+
+    .attribution {
+        padding: .2rem;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width:80rem) {
+    .primary-nav {
+        padding-inline: 3rem;
+        margin-right: 1rem;
+    }
+
+    .f-block {
+        right: 75%;
+        top:5rem;
+        padding: 1.7rem;
+    }
+
+    .c-block li {
+        padding: 0.3rem;
+    }
+
+    .c-block {
+        right: 61%;
+        top:5rem;
+    }
+
+    .data {
+        padding: 0;
+        width: 26rem;
+        padding: 1rem;
+        margin-top: 5.5rem;
+    }
+    h1{
+        font-size: 3rem;
+    }
+}
+
+@media screen and (min-width:89rem) {
+
+    .desktop-header {
+        gap: var(--gap, 1rem);
+    }
+
+    .f-block {
+        right: 79%;
+    }
+
+    .c-block li {
+        padding: 0.3rem;
+    }
+
+    .c-block {
+        right: 68%;
+    }
+
+    .data {
+        margin-top: 0;
+    }
+}
